@@ -38,7 +38,7 @@ class UserController extends Controller
     public function login()
     {
         $data['title'] = 'Login';
-        return view('user/login', $data);
+        return view('backend/login', $data);
     }
 
     public function login_action(Request $request)
@@ -49,7 +49,7 @@ class UserController extends Controller
         ]);
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
         return back()->withErrors([

@@ -14,19 +14,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+
+*/
+
+
 
 Route::get('/', function () {
-    return view('home', ['title' => 'Home']);
-})->name('home');
-
-
-Route::get('/template', function () {
     return view('frontend.template', ['title' => 'Halaman Frontend']);
 })->name('template');
 
-Route::get('/home', function () {
+Route::get('/dashboard', function () {
     return view('backend.home', ['title' => 'Home']);
 })->name('home');
+
+Route::get('/admin', function () {
+    return view('backend.login', ['title' => 'Login']);
+})->name('login');
+
+Route::get('about', function () {
+    return view('about', ['title' => 'About']);
+})->name('about');
 
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register', [UserController::class, 'register_action'])->name('register.action');
